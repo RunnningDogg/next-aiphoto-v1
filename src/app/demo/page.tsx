@@ -28,12 +28,12 @@ const getGames = async (): Promise<Game[]> => {
 };
 
 export default async function Home() {
-  const games = await getGames();
+  // const games = await getGames();
   // console.log(games);
 
   return (
     <main className="min-h-screen bg-red-50">
-      {games.map((game) => (
+      {/* {games.map((game) => (
         <div key={game.id} className="flex gap-3">
           <div>{game.id}</div>
           <div>{game.name}</div>
@@ -45,7 +45,7 @@ export default async function Home() {
             className="aspect-video"
           />
         </div>
-      ))}
+      ))} */}
     </main>
   );
 }
