@@ -50,7 +50,7 @@ const getGames = async (): Promise<Game[]> => {
 };
 
 async function Page() {
-  const games = await getGames();
+  // const games = await getGames();
   const session = await getServerSession(options);
   console.log(session);
 
