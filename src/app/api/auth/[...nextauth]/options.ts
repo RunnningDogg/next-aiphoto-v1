@@ -9,6 +9,9 @@ export const options: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      httpOptions: {
+        timeout: 40000,
+      },
     }),
     CredentialProvider({
       name: "Credentials",
@@ -48,6 +51,9 @@ export const options: NextAuthOptions = {
     }),
   ],
   callbacks: {},
+  pages: {
+    signIn: "/auth/signin",
+  },
 };
 
 // 我们可以用 process.env.GITHUB_ID 和 process.env.GITHUB_SECRET 来访问环境变量。

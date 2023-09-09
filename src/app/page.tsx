@@ -1,13 +1,29 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Github, Twitter, Facebook } from "lucide-react";
+import {
+  Github,
+  Twitter,
+  Facebook,
+  LogOut,
+  User,
+  CreditCard,
+  Users,
+} from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "@/components/ModeToggleBtn";
-import prisma from "@/lib/db";
 
 import { getServerSession } from "next-auth";
 import { options } from "./api/auth/[...nextauth]/options";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 /**
  * 用来fetch 游戏,学习写 server component
  */
@@ -48,20 +64,51 @@ async function Page() {
           extendPhotos.io <ModeToggle />{" "}
         </h1>
         <div className="flex gap-3">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-
           {/* 区分登录和非登录 */}
           {!session ? (
             <Button>
               <Link href="/api/auth/signin">Sign In</Link>
             </Button>
           ) : (
-            <Button>
-              <Link href="/api/auth/signout">Sign Out</Link>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                {session?.user?.image ? (
+                  <Avatar>
+                    <AvatarImage src={session?.user.image} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                ) : (
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                )}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>
+                  <span>My Account</span>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>Billing</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Users className="mr-2 h-4 w-4" />
+                  <span>Team</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <Link href="/api/auth/signout">
+                    <span>Log out</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
         </div>
       </header>
@@ -121,7 +168,7 @@ async function Page() {
             </div>
 
             <div className="flex flex-col gap-3 items-center">
-              <h2 className=" text-xl font-semibold">pic1</h2>
+              <h2 className=" text-xl font-semibold">Before</h2>
               <Image
                 src="/v2-1.jpg"
                 width={900}
@@ -132,7 +179,7 @@ async function Page() {
             </div>
 
             <div className="flex flex-col gap-3 items-center">
-              <h2 className=" text-xl font-semibold">pic1</h2>
+              <h2 className=" text-xl font-semibold">After</h2>
               <Image
                 src="/v2-2.jpg"
                 width={900}
