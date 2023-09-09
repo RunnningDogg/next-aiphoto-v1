@@ -2,7 +2,7 @@ import GithubProvider from "next-auth/providers/github";
 import CredentialProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
 import prisma from "@/lib/db";
-import { compare } from "bcrypt";
+// import { compare } from "bcrypt";
 
 export const options: NextAuthOptions = {
   providers: [

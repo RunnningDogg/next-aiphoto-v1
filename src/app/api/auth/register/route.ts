@@ -1,6 +1,6 @@
 import prisma from "@/lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
-import { hash } from "bcrypt";
+// import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, res: NextApiResponse) {
@@ -16,11 +16,11 @@ export async function POST(req: Request, res: NextApiResponse) {
   if (user) {
     return res.status(400).json({ error: "用户已存在" });
   }
-  const hashedPassword = await hash(password, 10);
+  // const hashedPassword = await hash(password, 10);
   const newUser = await prisma.user.create({
     data: {
       email,
-      password: hashedPassword,
+      password,
     },
   });
   // return res.status(200).json(newUser);

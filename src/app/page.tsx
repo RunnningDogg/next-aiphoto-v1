@@ -80,7 +80,7 @@ async function Page() {
           <Button>Extend Yout Photo</Button>
         </div>
 
-        <div className="image-gallery">
+        {/* <div className="image-gallery">
           <div className="grid grid-cols-2 gap-6">
             {games.map((game) => (
               <div key={game.id} className="flex flex-col gap-3 items-center">
@@ -94,6 +94,53 @@ async function Page() {
                 />
               </div>
             ))}
+          </div>
+        </div> */}
+        <div className="image-gallery">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="flex flex-col gap-3 items-center">
+              <h2 className=" text-xl font-semibold">Before</h2>
+              <Image
+                src="/v1-1.jpg"
+                width={900}
+                height={900}
+                alt="image-hero"
+                className="rounded-lg"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3 items-center">
+              <h2 className=" text-xl font-semibold">After</h2>
+              <Image
+                src="/v1-2.jpg"
+                width={900}
+                height={900}
+                alt="image-hero"
+                className=" rounded-lg"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3 items-center">
+              <h2 className=" text-xl font-semibold">pic1</h2>
+              <Image
+                src="/v2-1.jpg"
+                width={900}
+                height={900}
+                alt="image-hero"
+                className="  rounded-lg"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3 items-center">
+              <h2 className=" text-xl font-semibold">pic1</h2>
+              <Image
+                src="/v2-2.jpg"
+                width={900}
+                height={900}
+                alt="image-hero"
+                className="  rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </main>
