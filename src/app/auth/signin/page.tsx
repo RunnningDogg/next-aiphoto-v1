@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
+// import {compare} from "bcrypt";
 function Page() {
   // 登录成功后显示通知
   const { toast } = useToast();

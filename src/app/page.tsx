@@ -59,7 +59,7 @@ async function Page() {
 
   return (
     <section className="px-12 py-6 flex flex-col">
-      <header className="border-b py-4 flex justify-between">
+      <header className="border-b py-4 flex justify-between sticky top-0 z-20  backdrop-blur-md  ">
         <h1 className="text-4xl font-bold">
           extendPhotos.io <ModeToggle />{" "}
         </h1>
